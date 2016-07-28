@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}{{ block.super }}<link href="{% static 'css/dashboard.css' %}" rel="stylesheet">{% endblock %}
+{% block issuecontent %}
+<div class = 'row'>
+	<div class="col-sm-3 col-md-2 sidebar">
+		{% block sidebar %}{% include 'issuetrack/sidebar.html' %}{% endblock %}
+	</div>
+	<div class = 'col-sm-6 col-sm-offset-3'>
+		{% block main_col %}{% endblock %}
+	</div>
+	<div class = 'col-sm-3'>
+		{% block side_col %}
+		<br />
+		<div class="well text-center">
+		    <h4 >Go to Issue Number</h4>
+		    <form action = "{% url 'issue_detail' pk=10 %}"method = 'get'>
+		    	<input type = 'text' name = 'pk'>
+		        <button type = 'submit' value= 'Search' class="btn btn-primary btn-lg">Go</button>
+		    </form>
+		    <br />
+		</div>
+		{% endblock %}
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}{{ block.super }}<script src="{% static 'js/datepicker.js' %}"></script>{% endblock %}

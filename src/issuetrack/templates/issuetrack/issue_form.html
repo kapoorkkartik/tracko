@@ -1,0 +1,20 @@
+{% extends 'issuetrack/base_tracko.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block sidebar %} {{ block.super }} {% endblock %}
+
+{% block main_col %}
+<div class = 'row'>
+	<div class = 'col-sm-8 col-sm-offset-3'>
+	<br />
+	<h1> Add the Issue Details </h1>
+	<form action = "" method="post">{% csrf_token %}
+		{{ form|crispy }}
+		<input type = "Submit" value = "Save" />
+	</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block side_col %}{% endblock %}

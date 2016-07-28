@@ -1,0 +1,6 @@
+<ul class="nav nav-sidebar">
+  <li {% if '/issuetrack/' == request.get_full_path %} class="active" {% endif %}><a href="{% url 'index' %}">Open Issues</a></li>
+  <li{% if 'closed=2' in request.get_full_path %} class="active" {% endif %}><a href="{% url 'index' %}?closed=2">Closed Issues</a></li>
+  <li {% if '/add/' in request.path %} class="active" {% endif %}><a href="{% url 'add_issue' %}">Add New Issue</a></li>
+  <li {% if '/reports/' in request.path %} class="active" {% endif %}><a href="{% url 'reports' %}">Extract Reports</a></li>
+</ul>

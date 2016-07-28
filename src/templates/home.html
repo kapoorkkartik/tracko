@@ -1,0 +1,64 @@
+ {% extends 'base.html' %}
+ {% load crispy_forms_tags %}
+ {% block head_title %}Welcome | {{ block.super }} {% endblock %}
+
+<style>
+{% block style %}
+.navbar-static-top{
+    margin-bottom:0px !important;
+
+}
+.jumbotron{
+    background-color:#8A0917;
+    color: #FFF;
+}
+{% endblock %}
+</style>
+
+ {% block jumbotron %}
+     <div class="jumbotron">
+        <div class = "container">
+        <div class = "row">
+            <div class = 'col-sm-6'>
+                <h1>Tracko!</h1>
+                <p>The tracko project is designed to track applications.
+                The goal is to get instant feedback and generate daily reports. Start Today.</p>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="/issuetrack/" role="button">Start Now &raquo;</a>
+                </p>
+            </div>
+            <div class = 'col-sm-6'>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ge1YnLwpMLQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        </div>
+    </div>
+ {% endblock %}
+
+ {% block content %}
+ <div class = "row">
+    <div class = "col-xs-3">
+        <p class = "lead text-align-center">Generate Reports<br /><br />
+        <i class="fa fa-bar-chart fa-5x" aria-hidden="true"></i>
+        </p>
+    </div>
+    <div class = "col-xs-3">
+        <p class = "lead text-align-center">Provide Solutions<br /><br />
+        <i class="fa fa-wrench fa-5x" aria-hidden="true"></i>
+        </p>
+    </div>
+
+    <div class = "col-xs-3">
+        <p class="lead text-align-center">{{ title }}<br /> <br />
+        <i class="fa fa-search fa-5x" aria-hidden="true"></i>
+        </p>
+    </div>
+    
+    <div class = "col-xs-3">
+        <p class = "lead text-align-center">Mobile Friendly Design<br /><br />
+        <i class="fa fa-mobile fa-5x" aria-hidden="true"></i>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'issuetrack/base_tracko.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block sidebar %}{{ block.super }}{% endblock %}
+
+
+{% block main_col %}
+    <article>
+        <h2>{{ object.title }}</h2>
+        <div class="row">
+            <div class="group1 col-sm-6 col-md-6">
+                <span class="glyphicon glyphicon-user"></span>{{ object.creator }}
+            </div>
+            <div class="group2 col-sm-6 col-md-6">
+                    <span class="glyphicon glyphicon-pencil"></span> <a href=".">{{ object.comments.all.count }} comments</a>
+                      <span class="glyphicon glyphicon-time">{{ object.created|date }}
+            		</span>         
+            </div>
+        </div>
+        <hr />
+        <div class = 'row'>
+        	<div class = 'col-sm-12'>
+        		<table class = 'table table-striped'>
+        			<tr>
+        			<th>Applicant Name</th>
+        			<th>Application No</th>
+        			<th>Date of Birth</th>
+        			<th>License No</th>
+        			<th>Office</th>
+        		</tr>
+        		<tr>
+        			<td>{{object.applicant_name}}</td>
+        			<td>{{object.application_no}}</td>
+        			<td>{{object.birth_date}}</td>
+        			<td>{{object.license_no}}</td>
+        			<td>{{object.office}}</td>
+        		</tr>
+        		</table>
+            </div>
+        </div>
+        <hr />
+
+
+        <p class = "lead">{{ object.issue_description }}</p>
+        <hr />
+
+
+        <div class = 'well'>
+        	<h4>Leave a comment.</h4>
+            <form action = "{% url 'issue_detail' pk=object.pk %}" method="post">{% csrf_token %}
+        	   {{ form|crispy }}
+        	<input type = "Submit" value = "Save" />
+            </form>
+        </div>
+
+        <hr />
+        {% if object.comments.all %}
+        <ul id = "comments" class = "comments">
+        {% for comment in object.comments.all %}
+        	<li class = 'comment clearfix'>
+        	<div class = 'clearfix'>
+        	<h4 class='pull-left'>{{ comment.creator }}</h4>
+        	<p class = 'pull-right'>{{ comment.created }}</p>
+        	</div>
+        	<p>{{ comment.body }}</p>
+        	</li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <h4> No comments exist<h4>
+        {% endif %}
+    </article>
+{% endblock %}
+
+{% block side_col %}
+{{ block.super }}
+<div class="well text-center">
+    <a href = "{% url 'issue_update' pk=object.pk %}">
+        <button type = 'submit' value= 'Update' class="btn btn-danger btn-lg">Edit Issue</button>
+    </a>
+</div>
+{% endblock %}

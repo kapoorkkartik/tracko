@@ -1,0 +1,16 @@
+.text-align-center {
+	text-align:center;
+}
+
+.yadcf-filter {
+    width: 100px;
+}
+
+#comments, #comments li {
+    margin: 0;
+    padding: 0;
+}
+ 
+#comments li {
+    list-style: none;
+}
